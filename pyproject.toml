@@ -1,0 +1,39 @@
+[project]
+name = "agents-starter"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+classifiers = [
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+]
+
+
+# TODO: support workspace
+# [tool.uv.sources]
+# autogen_starter = { workspace = true }
+# agentsdk_starter = { workspace = true }
+# crewai_starter = { workspace = true }
+
+# [tool.uv.workspace]
+# members = ["shared/*", "agents_starter/*"]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["autogen_starter*"]
+exclude = ["*.tests*"]
+namespaces = false
+
+[tool.uv]
+concurrent-downloads = 8
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+"ags" = "autogen_starter.cli:run"
