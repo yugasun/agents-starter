@@ -1,0 +1,20 @@
+{
+  "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+  "component_type": "model",
+  "version": 1,
+  "component_version": 1,
+  "description": "Chat completion client for Qwen hosted models.",
+  "label": "OpenAIChatCompletionClient",
+  "config": {
+    "model": "qwen-max",
+    "api_key": "sk-6dd4c9505c1b4209a3d25b7c37e57ac9",
+    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "model_info": {
+      "vision": false,
+      "function_calling": true,
+      "json_output": false,
+      "family": "qwen",
+      "structured_output": true
+    }
+  }
+}

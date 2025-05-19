@@ -1,0 +1,20 @@
+{
+  "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+  "component_type": "model",
+  "version": 1,
+  "component_version": 1,
+  "description": "Chat completion client for OpenAI hosted models.",
+  "label": "OpenAIChatCompletionClient",
+  "config": {
+    "model": "gpt-4o",
+    "api_key": "sk-xxx",
+    "base_url": "https://api.openai.com/v1",
+    "model_info": {
+      "vision": false,
+      "function_calling": true,
+      "json_output": false,
+      "family": "unknown",
+      "structured_output": true
+    }
+  }
+}
