@@ -1,19 +1,18 @@
 import asyncio
-import autogen
 import re
-from requests.packages.urllib3.exceptions import InsecureRequestWarning
 import requests
 from bs4 import BeautifulSoup
 import textwrap
 from autogen import AssistantAgent, UserProxyAgent, LLMConfig
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 
-from ...llm.client import model_client
 from ...settings import openai_config
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 
+# Refer to https://github.com/ag2ai/build-with-ag2/blob/main/financial-analysis/README.md
 async def run():
     # code retrieved from https://stackoverflow.com/questions/79019497/retrieving-news-articles-from-yahoo-finance-canada-website
     def getUuids(companyName):

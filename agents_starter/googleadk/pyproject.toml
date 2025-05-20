@@ -1,0 +1,37 @@
+[project]
+name = "googleadk-starter"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "agents-starter-settings",
+    "click>=8.1.6",
+    "google-adk>=0.5.0",
+    "litellm>=1.70.0",
+]
+classifiers = [
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.uv]
+concurrent-downloads = 8
+
+[tool.uv.sources]
+agents-starter-settings = { path = "../settings" }
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["googleadk_starter*"]
+exclude = ["*.tests*"]
+namespaces = false
+
+[project.scripts]
+"agst" = "googleadk_starter.cli:run"

@@ -91,9 +91,6 @@ def init_settings():
     os.environ["OPENAI_API_KEY"] = openai_config.api_key
     os.environ["OPENAI_BASE_URL"] = openai_config.base_url
     os.environ["MODEL"] = openai_config.model
-    os.environ["OPENAI_API_KEY"] = openai_config.api_key
-    os.environ["OPENAI_API_BASE"] = openai_config.base_url
-    os.environ["MODEL"] = f"openai/{openai_config.model}"
     os.environ["SERPER_API_KEY"] = settings.serper.api_key
     os.environ["TAVILY_API_KEY"] = settings.tavily.api_key
     os.environ["LANGSMITH_TRACING"] = settings.langsmith.tracing

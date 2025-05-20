@@ -7,7 +7,7 @@ from . import examples
 
 @click.group()
 def cli():
-    """Examples runner."""
+    """CrewAI examples runner."""
     pass
 
 
