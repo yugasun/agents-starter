@@ -1,0 +1,19 @@
+[openai]
+api_key = ""
+base_url = "https://api.openai.com/v1"
+model = "gpt-4o"
+provider = "openai"
+promtp = "You are a helpful assistant. Please answer the following question: "
+
+
+[serper]
+api_key = "xxx"
+
+[langsmith]
+tracing = "true"
+endpoint = "https://api.smith.langchain.com"
+api_key = "xxx"
+project = "default"
+
+[tavily]
+api_key = "tvly-xxxx"
