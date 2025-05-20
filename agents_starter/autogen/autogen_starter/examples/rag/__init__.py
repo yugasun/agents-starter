@@ -1,5 +1,4 @@
 import os
-from pathlib import Path
 
 from autogen_agentchat.agents import AssistantAgent
 from autogen_agentchat.ui import Console
@@ -8,7 +7,7 @@ from autogen_ext.memory.chromadb import (
     PersistentChromaDBVectorMemoryConfig,
 )
 from .indexer import SimpleDocumentIndexer
-from ..llm.client import model_client
+from ...llm.client import model_client
 
 
 async def init_indexes():

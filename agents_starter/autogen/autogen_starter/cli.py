@@ -1,53 +1,54 @@
+#!/usr/bin/env python
 import asyncio
-from typing import Optional
-from agents import set_tracing_disabled
-import typer
+import click
 
-from .. import examples
-
-app = typer.Typer()
-
-set_tracing_disabled(True)  # Enable tracing for the CLI
+from . import examples
 
 
-# 获取命令航参数 --example/-e 来确定执行哪个函数
-@app.command(
-    help="Run the example function.",
-)
-def run_example(
-    framework: Optional[str] = "autogen", example: Optional[str] = "quickstart"
-):
+@click.group()
+def cli():
+    """Examples runner."""
+    pass
+
+
+@cli.command("run")
+@click.argument("example_name", default="quickstart")
+def run_example(example_name):
+    """Run a specific example by name.
+
+    Example:
+        $ arun run quickstart
     """
-    Run the example function.
-    """
-    fw_examples = None
-    run_func = None
-    if framework and example:
-        typer.echo(f"Example: {example}")
-        fw_examples = getattr(examples, f"{framework}_examples", None)
+    click.echo(f"Running example: {example_name}")
 
-        if fw_examples:
-            run_func = getattr(fw_examples, example, None)
-            if run_func:
-                typer.echo(f"Found example function: {run_func.__name__}")
-                asyncio.run(run_func())
-            else:
-                typer.echo(
-                    f"Example function '{example}' not found in framework '{framework}'."
-                )
+    run_func = getattr(examples, example_name, None)
+    if run_func and callable(run_func):
+        click.echo(f"Found example function: {run_func.__name__}")
+        # Properly handle async function
+        if asyncio.iscoroutinefunction(run_func):
+            asyncio.run(run_func())
         else:
-            typer.echo(
-                f"Framework '{framework}' not found. Available frameworks: {', '.join(examples.__all__)}"
-            )
-
+            run_func()
     else:
-        typer.echo(
-            "Please provide a framework and an example function to run. Use --help for more information."
-        )
+        click.echo(f"Example function '{example_name}' not found.")
+        click.echo("Available examples:")
+        for name in dir(examples):
+            if not name.startswith("_") and callable(getattr(examples, name)):
+                click.echo(f"  - {name}")
+
+
+@cli.command("list")
+def list_examples():
+    """List all available examples."""
+    click.echo("Available examples:")
+    for name in dir(examples):
+        if not name.startswith("_") and callable(getattr(examples, name)):
+            click.echo(f"  - {name}")
 
 
 def run():
-    app()
+    """Entry point function."""
+    cli()
 
 
 if __name__ == "__main__":

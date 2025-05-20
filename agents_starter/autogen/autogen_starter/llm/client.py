@@ -10,5 +10,10 @@ model_client = OpenAIChatCompletionClient(
     api_key=openai_config.api_key,
     base_url=openai_config.base_url,
     # should convert the model info model to a model info object
-    model_info=openai_config.model_info.model_dump(),
+    model_info={
+        "vision": False,
+        "function_calling": True,
+        "json_output": False,
+        "family": "unknown",
+    },
 )
