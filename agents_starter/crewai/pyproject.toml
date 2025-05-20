@@ -1,0 +1,39 @@
+[project]
+name = "crewai-starter"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "agents-starter-settings",
+    "click>=8.1.6",
+    "crewai[tools]==0.119.0",
+    "litellm>=1.68.0",
+    "pydantic>=2.11.4",
+    "pydantic-settings>=2.9.1",
+]
+classifiers = [
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.uv]
+concurrent-downloads = 8
+
+[tool.uv.sources]
+agents-starter-settings = { path = "../settings" }
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["crewai_starter*"]
+exclude = ["*.tests*"]
+namespaces = false
+
+[project.scripts]
+"agst" = "crewai_starter.cli:run"
