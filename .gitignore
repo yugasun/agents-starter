@@ -18,3 +18,7 @@ settings/settings.toml
 .chromadb*
 
 outputs
+
+
+.env*
+!.env.example

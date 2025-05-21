@@ -16,6 +16,7 @@ classifiers = [
 # autogen_starter = { workspace = true }
 # agentsdk_starter = { workspace = true }
 # crewai_starter = { workspace = true }
+# googleadk_starter = { workspace = true }
 
 # [tool.uv.workspace]
 # members = ["shared/*", "agents_starter/*"]
@@ -24,16 +25,9 @@ classifiers = [
 include-package-data = true
 
 [tool.setuptools.packages.find]
-include = ["autogen_starter*"]
+include = ["agents_starter*"]
 exclude = ["*.tests*"]
 namespaces = false
 
 [tool.uv]
 concurrent-downloads = 8
-
-[build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
-
-[project.scripts]
-"ags" = "autogen_starter.cli:run"
